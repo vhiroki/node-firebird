@@ -4,6 +4,15 @@
 [![Build Status](https://travis-ci.org/mariuz/node-firebird.svg?branch=master)](https://travis-ci.org/mariuz/node-firebird)
 
 [![NPM](https://nodei.co/npm/node-firebird.png?downloads=true&downloadRank=true)](https://nodei.co/npm/node-firebird/) [![NPM](https://nodei.co/npm-dl/node-firebird.png?months=6&height=3)](https://nodei.co/npm/node-firebird/)
+
+# Fork Notes
+This fork has been created to implement a way of setting the database charset and the node-firebird buffer parser encoding. I had problems with a specific database that had its data encoded with `binary`. Then node-firebird was not encoding correctly because it is set to use `uft8` as the encoding type and there is no way you can change it.
+
+In this fork, there are the implementations of two methods: `setEncoding(encoding)` and `setDbCharset(charset)`.
+
+ * `setEncoding(encoding)`: Set the encoding type the node-firebird should use to encode. Possible values: `utf8`, `latin1`, `ascii` and others. More info at: https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings.
+ * `setDbCharset(charset)`: Set the charset of the database. Possible values: `NONE`, `UCS_BASIC`, `UTF8`, `UNICODE` and others. More info at: https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref25-datatypes-chartypes.html.
+
 # Pure JavaScript Firebird client for Node.js.
 
 Pure JavaScript and Asynchronous Firebird client for Node.js. [Firebird forum](https://groups.google.com/forum/#!forum/node-firebird) on Google Groups.
